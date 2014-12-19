@@ -1,0 +1,27 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title> Rubikin Intership Homework</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+</head>
+<body>
+<input type="submit" class="button" name="import" value="import" />
+<input type="submit" class="button" name="showsql" value="showsql" />
+<div class="ct" hidden></div>
+<script>
+        $(document).ready(function(){
+            $('#ct').hide();
+            $('.button').click(function(){
+                $('.ct').html('<img src="loading.gif">').show();
+                var clickBtnValue = $(this).val();
+                    var ajaxurl = 'second_day_homework.php',
+                    data =  {'action': clickBtnValue};
+                    $.post(ajaxurl, data, function (response) {
+                        // Response div goes here.
+                       $('.ct').html(response).show();
+                    });
+                });
+            });
+</script>
+</body>
+</html>
